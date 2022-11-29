@@ -4,6 +4,7 @@ import styles from "../../styles/Overlay.module.css";
 import AnimePoster from "../../components/AnimePoster";
 import { Permanent_Marker } from "@next/font/google";
 import { NextPageContext } from "next";
+import { renderTitle } from "../../helpers/index";
 
 const permanentMarker = Permanent_Marker({ weight: "400" });
 
@@ -34,11 +35,7 @@ export default function Anime({ anime }: any) {
         >
           <div className={styles.overlayGray}>
             <h1 className={`text-3xl permanentMarker ${styles.overlayContent}`}>
-              {data.attributes.titles.en
-                ? data.attributes.titles.en
-                : data.attributes.titles.en_jp
-                ? data.attributes.titles.en_jp
-                : data.attributes.titles.jp}
+              {renderTitle(data.attributes.titles)}
             </h1>
           </div>
         </div>

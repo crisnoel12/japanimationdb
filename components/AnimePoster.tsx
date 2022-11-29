@@ -4,14 +4,16 @@ import styles from "../styles/Overlay.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { renderTitle } from "../helpers/index";
 
 interface PROPS {
   anime: any;
   isSingular?: boolean;
 }
 
-export default function AnimePoster({ anime, isSingular }: any) {
+export default function AnimePoster({ anime, isSingular }: PROPS) {
   const router = useRouter();
+  const animeTitle = renderTitle(anime.attributes.titles);
 
   const display = () => {
     if (isSingular) {
@@ -21,25 +23,13 @@ export default function AnimePoster({ anime, isSingular }: any) {
             <Image
               width={110}
               height={156}
-              alt={`${
-                anime.attributes.titles.en
-                  ? anime.attributes.titles.en
-                  : anime.attributes.titles.en_jp
-                  ? anime.attributes.titles.en_jp
-                  : anime.attributes.titles.jp
-              }'s poster image`}
+              alt={`${animeTitle}'s poster image`}
               className="m-auto mt-4"
               src={`${anime.attributes.posterImage.tiny}`}
             />
           </div>
           <div className="mt-2 p-4">
-            <h4 className="text-2xl font-medium mb-2">
-              {anime.attributes.titles.en
-                ? anime.attributes.titles.en
-                : anime.attributes.titles.en_jp
-                ? anime.attributes.titles.en_jp
-                : anime.attributes.titles.jp}
-            </h4>
+            <h4 className="text-2xl font-medium mb-2">{animeTitle}</h4>
             <div className="border-t-[2px] border-slate-700">
               <p className="capitalize mt-2 mb-2">
                 Type:{" "}
@@ -84,13 +74,7 @@ export default function AnimePoster({ anime, isSingular }: any) {
         <div className={`w-full h-96 ${styles.overlayContainer}`}>
           <Image
             fill
-            alt={`${
-              anime.attributes.titles.en
-                ? anime.attributes.titles.en
-                : anime.attributes.titles.en_jp
-                ? anime.attributes.titles.en_jp
-                : anime.attributes.titles.jp
-            }'s poster image`}
+            alt={`${animeTitle}'s poster image`}
             src={`${anime.attributes.posterImage.small}`}
           />
           <div className={styles.overlay}>
@@ -103,13 +87,7 @@ export default function AnimePoster({ anime, isSingular }: any) {
           </div>
         </div>
         <div className="mt-4 p-4">
-          <h4 className="text-2xl font-medium mb-2">
-            {anime.attributes.titles.en
-              ? anime.attributes.titles.en
-              : anime.attributes.titles.en_jp
-              ? anime.attributes.titles.en_jp
-              : anime.attributes.titles.jp}
-          </h4>
+          <h4 className="text-2xl font-medium mb-2">{animeTitle}</h4>
           <div className="border-t-[2px] border-slate-700">
             <p className="capitalize mt-2 mb-2">
               Type:{" "}
