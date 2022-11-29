@@ -3,6 +3,7 @@ import moment from "moment";
 import styles from "../styles/Overlay.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface PROPS {
   anime: any;
@@ -17,7 +18,16 @@ export default function AnimePoster({ anime, isSingular }: any) {
       return (
         <div className="bg-slate-800 col-span-1 md:col-span-3 md:border-r-2 md:border-slate-700">
           <div className={styles.overlayContainer}>
-            <img
+            <Image
+              width={110}
+              height={156}
+              alt={`${
+                anime.attributes.titles.en
+                  ? anime.attributes.titles.en
+                  : anime.attributes.titles.en_jp
+                  ? anime.attributes.titles.en_jp
+                  : anime.attributes.titles.jp
+              }'s poster image`}
               className="m-auto mt-4"
               src={`${anime.attributes.posterImage.tiny}`}
             />
@@ -71,8 +81,18 @@ export default function AnimePoster({ anime, isSingular }: any) {
 
     return (
       <div className="bg-slate-800">
-        <div className={styles.overlayContainer}>
-          <img width="100%" src={`${anime.attributes.posterImage.original}`} />
+        <div className={`w-full h-96 ${styles.overlayContainer}`}>
+          <Image
+            fill
+            alt={`${
+              anime.attributes.titles.en
+                ? anime.attributes.titles.en
+                : anime.attributes.titles.en_jp
+                ? anime.attributes.titles.en_jp
+                : anime.attributes.titles.jp
+            }'s poster image`}
+            src={`${anime.attributes.posterImage.small}`}
+          />
           <div className={styles.overlay}>
             <Link
               href={`/anime/${anime.id}`}
