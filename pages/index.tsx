@@ -1,11 +1,8 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import AnimePoster from '../components/AnimePoster';
 import { Montserrat } from '@next/font/google';
 import InfiniteScroll from 'react-infinite-scroller';
-import axios from 'axios';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -60,7 +57,7 @@ export default function Home({ initialAnimeList, links, count }: any) {
   )
 }
 
-export const getStaticProps = async(context: any) => {
+export const getServerSideProps = async() => {
   const response = await fetch(`https://kitsu.io/api/edge/anime?page[limit]=${limit}`);
   const data = await response.json();
 

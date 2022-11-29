@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header';
 import styles from '../../styles/Overlay.module.css';
-import moment from 'moment';
 import AnimePoster from '../../components/AnimePoster';
 import { Permanent_Marker } from '@next/font/google'
 
