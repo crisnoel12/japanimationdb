@@ -1,17 +1,18 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
-import { Bebas_Neue } from '@next/font/google'
+import React from "react";
+import Link from "next/link";
+import { Bebas_Neue } from "@next/font/google";
 
 const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"] });
 
 export default function Header() {
   return (
     <>
-      <style jsx global>{`
-        .logo {
-          font-family: ${bebasNeue.style.fontFamily} !important;
-        }
-      `}
+      <style jsx global>
+        {`
+          .logo {
+            font-family: ${bebasNeue.style.fontFamily} !important;
+          }
+        `}
       </style>
       <div className="relative bg-emerald-900 mb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -19,7 +20,9 @@ export default function Header() {
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <Link href="/">
                 <span className="sr-only">JapanimationDB</span>
-                <h1 className="logo text-3xl uppercase">Japanimation<span className="font-bold text-black">DB</span></h1>
+                <h1 className="logo text-3xl uppercase">
+                  Japanimation<span className="font-bold text-black">DB</span>
+                </h1>
               </Link>
             </div>
             {/* <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
@@ -37,5 +40,5 @@ export default function Header() {
         </div>
       </div>
     </>
-  )
+  );
 }
