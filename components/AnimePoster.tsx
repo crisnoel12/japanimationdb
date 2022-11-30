@@ -74,6 +74,8 @@ export default function AnimePoster({ anime, isSingular }: PROPS) {
         <div className={`w-full h-96 ${styles.overlayContainer}`}>
           <Image
             fill
+            sizes="(max-width: 1200px) 50vw,
+              100vw"
             alt={`${animeTitle}'s poster image`}
             src={`${anime.attributes.posterImage.small}`}
           />
