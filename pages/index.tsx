@@ -39,16 +39,15 @@ export default function Home({ initialAnimeList, links, count }: any) {
           loadMore={loadMore}
           hasMore={animeList.length !== count}
           loader={
-            <div className="w-full text-center">
-              <span key={0} className="loader mx-auto mt-8 mb-8"></span>
+            <div key={0} className="w-full text-center">
+              <span className="loader mx-auto mt-8 mb-8"></span>
             </div>
           }
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {animeList &&
-              animeList.map((anime: any, i: number) => (
-                <AnimePoster key={anime.id} anime={anime} />
-              ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {animeList.map((anime: any, i: number) => (
+              <AnimePoster key={anime.id} anime={anime} />
+            ))}
           </div>
         </InfiniteScroll>
       </div>
