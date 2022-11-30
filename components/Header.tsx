@@ -10,7 +10,7 @@ export default function Header() {
       <style jsx global>
         {`
           .logo {
-            font-family: ${bebasNeue.style.fontFamily} !important;
+            font-family: ${bebasNeue.style.fontFamily};
           }
         `}
       </style>
