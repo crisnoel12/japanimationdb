@@ -1,14 +1,18 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Header from "../../components/Header";
 import styles from "../../styles/Overlay.module.css";
 import AnimePoster from "../../components/AnimePoster";
 import { Permanent_Marker } from "@next/font/google";
-import { NextPageContext } from "next";
+import { GetServerSideProps } from "next";
 import { renderTitle } from "../../helpers/index";
 
 const permanentMarker = Permanent_Marker({ weight: "400" });
 
-export default function Anime({ anime }: any) {
+interface PROPS {
+  anime: any;
+}
+
+const Anime: FunctionComponent<PROPS> = ({ anime }) => {
   const { data } = anime;
   return (
     <>
@@ -52,9 +56,11 @@ export default function Anime({ anime }: any) {
       </div>
     </>
   );
-}
+};
 
-export async function getServerSideProps(context: NextPageContext) {
+export default Anime;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(
     `https://kitsu.io/api/edge/anime/${context.query.id}`
   );
@@ -65,4 +71,4 @@ export async function getServerSideProps(context: NextPageContext) {
       anime,
     },
   };
-}
+};

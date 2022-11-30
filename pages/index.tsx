@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../components/Header";
 import AnimePoster from "../components/AnimePoster";
 import { Montserrat } from "@next/font/google";
@@ -8,7 +8,13 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 
 const limit = 20;
 
-export default function Home({ initialAnimeList, links, count }: any) {
+interface PROPS {
+  initialAnimeList: any[];
+  links: any;
+  count: any;
+}
+
+const Home: FunctionComponent<PROPS> = ({ initialAnimeList, links, count }) => {
   const [animeList, setAnimeList] = useState(initialAnimeList);
   const [offset, setOffset] = useState(0);
 
@@ -53,9 +59,11 @@ export default function Home({ initialAnimeList, links, count }: any) {
       </div>
     </>
   );
-}
+};
 
-Home.getInitialProps = async () => {
+export default Home;
+
+export const getServerSideProps = async () => {
   const response = await fetch(
     `https://kitsu.io/api/edge/anime?page[limit]=${limit}`
   );
