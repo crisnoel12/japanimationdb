@@ -70,8 +70,10 @@ export const getServerSideProps = async () => {
   const data = await response.json();
 
   return {
-    initialAnimeList: data.data,
-    links: data.links,
-    count: data.meta.count,
+    props: {
+      initialAnimeList: data.data,
+      links: data.links,
+      count: data.meta.count,
+    },
   };
 };
