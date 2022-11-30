@@ -55,17 +55,15 @@ export default function Home({ initialAnimeList, links, count }: any) {
   );
 }
 
-export const getServerSideProps = async () => {
+Home.getInitialProps = async () => {
   const response = await fetch(
     `https://kitsu.io/api/edge/anime?page[limit]=${limit}`
   );
   const data = await response.json();
 
   return {
-    props: {
-      initialAnimeList: data.data,
-      links: data.links,
-      count: data.meta.count,
-    },
+    initialAnimeList: data.data,
+    links: data.links,
+    count: data.meta.count,
   };
 };
