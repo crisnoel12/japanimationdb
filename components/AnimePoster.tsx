@@ -1,10 +1,9 @@
 import React from "react";
-import moment from "moment";
 import styles from "../styles/Overlay.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { renderTitle } from "../helpers/index";
+import { renderTitle, renderDate } from "../helpers/index";
 
 interface PROPS {
   anime: any;
@@ -45,18 +44,7 @@ export default function AnimePoster({ anime, isSingular }: PROPS) {
                   {anime.attributes.ageRating}
                 </span>
               </p>
-              <p className="mt-2 mb-2">
-                From:{" "}
-                <span className="rounded bg-green-500 text-sm p-1">
-                  {moment(anime.attributes.startDate).format("MMMM Do YYYY")}
-                </span>
-              </p>
-              <p className="mt-2">
-                To:{" "}
-                <span className="rounded bg-red-500 text-sm p-1">
-                  {moment(anime.attributes.endDate).format("MMMM Do YYYY")}
-                </span>
-              </p>
+              {renderDate(anime)}
             </div>
             <div className="border-t-[2px] border-slate-700 mt-4">
               <button
@@ -105,18 +93,7 @@ export default function AnimePoster({ anime, isSingular }: PROPS) {
                 {anime.attributes.ageRating}
               </span>
             </p>
-            <p className="mt-2 mb-2">
-              From:{" "}
-              <span className="rounded bg-green-500 text-sm p-1">
-                {moment(anime.attributes.startDate).format("MMMM Do YYYY")}
-              </span>
-            </p>
-            <p className="mt-2">
-              To:{" "}
-              <span className="rounded bg-red-500 text-sm p-1">
-                {moment(anime.attributes.endDate).format("MMMM Do YYYY")}
-              </span>
-            </p>
+            {renderDate(anime)}
           </div>
         </div>
       </div>
